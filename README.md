@@ -30,12 +30,15 @@ First clone the repository, then cd into the directory and run `source env.sh` t
 
 #### Training on Rivanna
 ##### Training with Interactive Environment
-To train the model run the following command: `python train_segmentation.py -c configs/config_attn_unet_segmentation.json`
+To train the model run the following command: `python train_segmentation.py -c configs/config_attn_unet_segmentation.json`.
+After running the training script, the resulting training plots will be in figs/model\_name (unet\_ct\_multi\_att\_dsv for the Attention U-net) and the model checkpoints will be in checkpoints/experiment\_unet\_ct\_multi\_att\_dsv\_segmentation. 
 
 To train the model with hyperparameter search run the following command: `python tune_segmentation.py -c configs/config_attn_unet_segmentation.json`
 
 ##### Training with SLURM
- To train the Attention U-Net on Rivanna, run `sbatch train.slurm`.  After running the training script, the resulting training plots will be in figs/model\_name (unet\_ct\_multi\_att\_dsv for the Attention U-net) and the model checkpoints will be in checkpoints/experiment\_unet\_ct\_multi\_att\_dsv\_segmentation. To run hyperparameter tuning, run `sbatch tune.slurm`. The terminal outputs for the job will be in the segmentation-[RIVANNA_USER_ID]-[SLURM_JOB_ID].err and segmentation-[RIVANNA_USER_ID]-[SLURM_JOB_ID].out files.
+ To train the Attention U-Net on Rivanna, run `sbatch train.slurm`. The terminal outputs for the job will be in the segmentation-[RIVANNA_USER_ID]-[SLURM_JOB_ID].err and segmentation-[RIVANNA_USER_ID]-[SLURM_JOB_ID].out files. After running the training script, the resulting training plots will be in figs/model\_name (unet\_ct\_multi\_att\_dsv for the Attention U-net) and the model checkpoints will be in checkpoints/experiment\_unet\_ct\_multi\_att\_dsv\_segmentation. 
+ 
+ To run hyperparameter tuning, run `sbatch tune.slurm`. The terminal outputs for the job will be in the tune-[RIVANNA_USER_ID]-[SLURM_JOB_ID].err and tune-[RIVANNA_USER_ID]-[SLURM_JOB_ID].out files.
 
  #### Visualizing Attention Maps
  To visualize attention maps run `python visualize_attention_mlia.py -c [CONFIG_NAME] -p [CHECKPOINT_NAME] -e [EXPERIMENT_NAME]`
